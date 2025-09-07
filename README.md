@@ -31,47 +31,55 @@ An AI-powered interior design application that uses Google's Gemini 2.5 Flash Im
 - **Inspiration Fusion**: Combines multiple inspiration images with real room photos
 - **Shopping Lists**: Generates actionable shopping guides based on transformations
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Kaggle Only)
 
 ### Prerequisites
 - Kaggle account
-- Google AI API key (free at https://ai.studio/banana)
+- Google AI API key (free)
 
-### Setup Instructions
+### Step 1: Get Your API Key
+1. Visit [Google AI Studio](https://ai.google.dev/aistudio)
+2. Sign up/login with your Google account
+3. Click "Get API Key" → "Create API Key"
+4. Copy the generated API key (keep it secure!)
 
-1. **Get Your API Key**
-  - Visit https://ai.studio/banana
-  - Sign up/login with Google account
-  - Create new API key
-  - Copy the key (keep it secure!)
+### Step 2: Open the Notebook in Kaggle
+1. Go to [Kaggle.com](https://www.kaggle.com) and sign in
+2. Click "Create" → "New Notebook"
+3. Download the `InteriorAI_Studio.ipynb` file from this repository
+4. In Kaggle, click "File" → "Upload Notebook"
+5. Select the downloaded `.ipynb` file
 
-2. **Setup on Kaggle**
-  - Go to [Kaggle.com](https://www.kaggle.com)
-  - Create new notebook
-  - Copy the code from `interior_ai_studio.py`
-  - Paste it into your Kaggle notebook
+### Step 3: Add Your API Key to Kaggle Secrets
+1. In your Kaggle notebook, click "Add-ons" → "Secrets"
+2. Click "Add New Secret"
+3. **Name**: `gemini_api_key`
+4. **Value**: Paste your API key from Step 1
+5. Click "Add"
 
-3. **Add API Key to Kaggle Secrets**
-  - In your Kaggle notebook, click **"Add-ons"** → **"Secrets"**
-  - Click **"Add New Secret"**
-  - Name: `gemini_api_key`
-  - Value: Paste your API key from Step 1
-  - Click **"Add"**
+### Step 4: Run the Notebook
+1. Click "Run All" or run cells individually
+2. The notebook will automatically:
+  - Install required packages
+  - Initialize the Gemini client
+  - Generate a sample room demonstration
+  - Show room analysis and transformations
+  - Create shopping lists
 
-4. **Run the Code**
-  - Click **"Run All"** in Kaggle notebook
-  - Wait for packages to install
-  - The code will automatically generate demo transformations
+## 📸 Using Your Own Room Photos
 
-### Try Your Own Images
+1. Upload your room photos to Kaggle:
+  - Click "Input" → "Upload" in your notebook
+  - Select your room images
 
+2. Modify the code to use your images:
 ```python
+# Replace the sample room generation with your uploaded image
+your_room_file = "/kaggle/input/your-dataset/your_room_photo.jpg"
+
 # Analyze your room
-analysis = analyze_room("your_room_photo.jpg")
+analysis = analyze_room(your_room_file)
 
 # Transform with different styles
-modern_designs = redesign_room("your_room_photo.jpg", "Modern minimalist with white furniture and plants")
-cozy_designs = redesign_room("your_room_photo.jpg", "Cozy rustic with warm woods and soft textures")
-
-# Generate shopping list
-shopping_list = generate_shopping_list("your_room_photo.jpg", modern_designs[0])
+modern_design = redesign_room(your_room_file, "Modern minimalist with white furniture and plants")
+cozy_design = redesign_room(your_room_file, "Cozy rustic with warm woods and textures")
